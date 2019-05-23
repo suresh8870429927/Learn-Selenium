@@ -1,0 +1,153 @@
+
+
+
+
+What is an API?---url:https://www.guru99.com/postman-tutorial.html#1 
+API stands for Application Programming Interface which allows software applications to communicate with each other via API calls.  
+
+ 
+
+Why Use Postman?
+Accessibility - To use Postman, one would just need to log-in to their own accounts making it easy to access files anytime, anywhere as long as a Postman application is installed on the computer.
+1. Use of Collections - Postman lets users create collections for their API calls. Each collection can create subfolders and multiple requests. This helps in organizing your test suites.
+2. Collaboration - Collections and environments can be imported or exported making it easy to share files. A direct link can also be used to share collections.
+3. Creating Environments - Having multiple environments aids in less repetition of tests as one can use the same collection but for a different environment. This is where parameterization will take place which we will discuss in further lessons.
+4. Creation of Tests - Test checkpoints such as verifying for successful HTTP response status can be added to each API calls which help ensure test coverage.
+5. Automation Testing - Through the use of the Collection Runner or Newman, tests can be run in multiple iterations saving time for repetitive tests.
+6. Debugging - Postman console helps to check what data has been retrieved making it easy to debug tests.
+7. Continuous Integration - With its ability to support continuous integration, development practices are maintained.
+
+
+How to Download and Install POSTMAN
+Being an Open Source tool, Postman can be easily downloaded. Here are the steps to install:
+Step 1) Go to https://www.getpostman.com/downloads/ and choose your desired platform among Mac, Windows or Linux. Click Download.
+
+
+Step 2) Your download is in progress message should now display on the Apps page. Once the download has completed, click on Run.
+
+
+
+
+
+
+
+
+
+
+Step 3) Installation Starts
+
+Step 4) In the next window, Signup for a Postman Account 
+
+Step 5) Select the workspace tools you need and click Save My Preferences 
+
+
+
+Step 6) You will see the Startup Screen 
+How to use Postman
+
+
+
+
+1. Import - This is used to import a collection or environment. There are options such as import from file, folder, link or paste raw text.
+2. Runner - Automation tests can be executed through the Collection Runner. This will be discussed further in the next lesson.
+3. Open New - Open a new tab, Postman Window or Runner Window by clicking this button.
+4. My Workspace - You can create a new workspace individually or as a team.
+5. Invite - Collaborate on a workspace by inviting team members.
+6. History - Past requests that you have sent will be displayed in History. This makes it easy to track actions that you have done.
+7. Collections - Organize your test suite by creating collections. Each collection may have subfolders and multiple requests. A request or folder can also be duplicated as well.
+8. Request tab - This displays the title of the request you are working on. By default, "Untitled Request" would be displayed for requests without titles.
+9. HTTP Request - Clicking this would display a dropdown list of different requests such as GET, POST, COPY, DELETE, etc. In testing, the most commonly used requests are GET and POST.
+10. Request URL - Also known as an endpoint, this is where you will identify the link to where the API will communicate with.
+11. Save - If there are changes to a request, clicking save is a must so that new changes will not be lost or overwritten.
+12. Params - This is where you will write parameters needed for a request such as key values.
+13. Authorization - In order to access APIs, proper authorization is needed. It may be in the form of a username and password, bearer token, etc.
+14. Headers - You can set headers such as content type JSON depending on the needs of the organization.
+15. Body - This is where one can customize details in a request commonly used in POST request.
+16. Pre-request Script - These are scripts that will be executed before the request. Usually, pre-request scripts for the setting environment are used to ensure that tests will be run in the correct environment.
+17. Tests - These are scripts executed during the request. It is important to have tests as it sets up checkpoints to verify if response status is ok, retrieved data is as expected and other tests.
+
+GET Requests
+Set your HTTP request to GET.
+1. In the request URL field, input link
+2. Click Send
+3. You will see 200 OK Message
+4. There should be 10 user results in the body which indicates that your
+POST Requests
+Set your HTTP request to POST.
+1. Input the same link in request url:https://jsonplaceholder.typicode.com/users
+2. switch to the Body tab
+
+Step 3) In Body,
+1. Click raw
+2. Select JSON
+
+Step 4) Copy and paste just one user result from the previous get request like below. Ensure that the code has been copied correctly with paired curly braces and brackets. Change id to 11 and name to any desired name. You can also change other details like the address. 
+[
+    {
+        "id": 11,
+        "name": "Krishna Rungta",
+        "username": "Bret",
+        "email": "Sincere@april.biz",
+        "address": {
+            "street": "Kulas Light",
+            "suite": "Apt. 556",
+            "city": "Gwenborough",
+            "zipcode": "92998-3874",
+            "geo": {
+                "lat": "-37.3159",
+                "lng": "81.1496"
+            }
+        },
+        "phone": "1-770-736-8031 x56442",
+        "website": "hildegard.org",
+        "company": {
+            "name": "Romaguera-Crona",
+            "catchPhrase": "Multi-layered client-server neural-net",
+            "bs": "harness real-time e-markets"
+        }
+    }
+]
+
+
+
+
+Step 5) Next,
+1. Click Send.
+2. Status: 201 Created should be displayed
+3. Posted data are showing up in the body.
+Parameterize Requests
+Data Parameterization is one of the most useful features of Postman. Instead of creating the same requests with different data, you can use variables with parameters. These data can be from a data file or an environment variable. Parameterization helps to avoid repetition of the same tests and iterations can be used for automation testing.
+Parameters are created through the use of double curly brackets: {{sample}}. Let's take a look at an example of using parameters in our previous request:
+
+
+
+
+Set your HTTP request to GET
+1. Input this link: https://jsonplaceholder.typicode.com/users. Replace the first part of the link with a parameter such as {{url}}. Request url should now be {{url}}/users.
+2. Click send.
+
+
+
+Step 2) To use the parameter you need to set the environment
+1. Click the eye icon
+2. Click edit to set the variable to a global environment which can be used in all collections.
+
+Step 3) In variable,
+1. set the name to the url which is https://jsonplaceholder.typicode.com
+2. click Save.
+
+
+
+
+Example:
+
+How to Create Postman Tests
+Postman Tests are JavaScript codes added to requests that help you verify results such as successful or failed status, comparison of expected results, etc. It usually starts with pm.test. It can be compared to asserts, verify commands available in other tools. 
+Step 1) Go to your GET user request from the previous tutorial.
+1. Switch to the tests tab. On the right side are snippet codes.
+2. From the snippets section, click on "Status code: Code is 200".
+
+Step 2) Now click Send. The test result should now be displayed. 
+
+
+
